@@ -1,0 +1,14 @@
+[
+  {
+    "itemid": 12,
+    "name" : "",
+    "weight" : 15,
+    "planet" : "mars"
+  },
+  {
+    "itemid": 123,
+    "name" : "",
+    "weight" : 15,
+    "planet" : "mars"
+  }
+]
