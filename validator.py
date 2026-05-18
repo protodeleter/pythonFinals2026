@@ -12,5 +12,8 @@ class Validator:
             return False
         return True
 
-    def validate_positive_numbers(self, value):
-        pass
+    @staticmethod
+    def validate_positive_numbers( value):
+        if value < 0:
+            return False
+        return True
