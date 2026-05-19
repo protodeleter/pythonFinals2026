@@ -2,6 +2,7 @@
 from app import App
 from cargo_item import CargoItem
 from db import Db
+from error_logger import ErrorLogger
 from validator import Validator
 # Press Shift+F10 to execute it or replace it with your code.
 # Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
@@ -15,9 +16,11 @@ import json
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    obj = App()
-    App.run(obj)
+    # obj = App()
+    # App.run(obj)
 
+    logger = ErrorLogger()
+    logger.write_log("asfasf")
     # ci = CargoItem("test", "12" ,"mars")
 
     # print(ci)

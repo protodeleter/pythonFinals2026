@@ -14,6 +14,7 @@ class Validator:
 
     @staticmethod
     def validate_positive_numbers( value):
-        if value < 0:
+        try:
+            return float(value) > 0
+        except ValueError:
             return False
-        return True
