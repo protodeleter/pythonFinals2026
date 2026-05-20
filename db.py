@@ -3,7 +3,6 @@ import os
 
 
 class Db:
-
     _file = "db.json"
 
     def __init__(self):
@@ -40,12 +39,11 @@ class Db:
             return True
         return False
 
-    def delete_item(self, itemid:int) -> None:
+    def delete_item(self, itemid: str) -> None:
         for item in self._dbfile:
             if item["itemid"] == itemid:
                 self._dbfile.remove(item)
         self._update_db()
-
 
     def _update_db(self) -> bool:
         with open(self._file, "w", encoding="utf-8") as file:
@@ -55,11 +53,14 @@ class Db:
             except json.JSONDecodeError:
                 return False
 
-
-    def get_item_by_id(self, itemid:str) -> dict:
+    def get_item_by_id(self, itemid: str) -> dict:
         for item in self._dbfile:
             if item["itemid"] == itemid:
                 return item
         return {}
 
-
+    def get_all_items(self):
+        items = []
+        for item in self._dbfile:
+            items.append(item)
+        return items

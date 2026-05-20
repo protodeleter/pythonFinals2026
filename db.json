@@ -1,26 +1,26 @@
 [
     {
-        "itemid": "a81e8502-7551-4a50-aff5-28943a3408ee",
-        "name": "qwr",
+        "itemid": "7df2ab73-b961-4b41-9130-e2b23bcfe789",
+        "name": "fas",
         "weight": 12.0,
         "planet": "asf"
     },
     {
-        "itemid": "8e55f6b0-53bf-4a5c-a204-f6e2d67f3ed3",
-        "name": "asf",
-        "weight": 1.0,
-        "planet": "2af"
-    },
-    {
-        "itemid": "6ba0661d-5921-46e6-9296-07d42e04d711",
+        "itemid": "5ebae660-cdc7-4c68-b316-0869862fec87",
         "name": "asf",
         "weight": 12.0,
         "planet": "asf"
     },
     {
-        "itemid": "31717a03-a71b-40f3-9de8-7b6544342a63",
-        "name": "as",
-        "weight": 12.0,
-        "planet": "awf"
+        "itemid": "910cc266-3685-42b6-8ab3-2e1f07ccc77e",
+        "name": "asf",
+        "weight": 123.0,
+        "planet": "asf"
+    },
+    {
+        "itemid": "b0d1b4f2-42f5-44e5-aed5-180d800b52b9",
+        "name": "asf",
+        "weight": 123.0,
+        "planet": "asf"
     }
 ]
