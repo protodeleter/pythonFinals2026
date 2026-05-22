@@ -8,6 +8,7 @@ class Db:
     def __init__(self):
         self._dbfile = self._load_db()
 
+
     def _load_db(self):
         if not os.path.exists(self._file):
             self._fix_empty_db()
@@ -34,24 +35,39 @@ class Db:
             json.dump([], file, indent=4)
 
     def insert_item(self, item: dict) -> bool:
+
+
         self._dbfile.append(item)
         if self._update_db():
             return True
         return False
 
-    def delete_item(self, itemid: str) -> None:
+    def delete_item(self, itemid: int) -> None:
+
+        print("***before***")
+        print(self._dbfile)
+
         for item in self._dbfile:
             if item["itemid"] == itemid:
                 self._dbfile.remove(item)
+
+
+
         self._update_db()
 
     def _update_db(self) -> bool:
-        with open(self._file, "w", encoding="utf-8") as file:
-            try:
+        try:
+            with open(self._file, "w", encoding="utf-8") as file:
                 json.dump(self._dbfile, file, indent=4)
-                return True
-            except json.JSONDecodeError:
-                return False
+            return True
+
+        except TypeError as e:
+            print("Data cannot be converted to JSON:", e)
+            return False
+
+        except OSError as e:
+            print("File write error:", e)
+            return False
 
     def get_item_by_id(self, itemid: str) -> dict:
         for item in self._dbfile:
@@ -60,7 +76,24 @@ class Db:
         return {}
 
     def get_all_items(self):
-        items = []
-        for item in self._dbfile:
-            items.append(item)
-        return items
+        with open( self._file, 'r') as file:
+            data = json.load(file)
+        return data
+
+
+    def _get_max_id(self) -> int:
+        max_id = 0
+        with open(self._file, 'r') as file:
+            data = json.load(file)
+            for item in data:
+                max_id = max(max_id, int(item["itemid"]))
+
+        return max_id
+
+    def _increment_max_id(self) -> int:
+        self._max_id = self._get_max_id() + 1
+        return self._max_id
+
+    def assign_id(self):
+        return self._increment_max_id()
+

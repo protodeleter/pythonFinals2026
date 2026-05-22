@@ -1,6 +1,9 @@
+from importlib.metadata import requires
+
 from cargo_item import CargoItem
 from cargo_station import CargoStation
 from db import Db
+from special_cargo import SpecialCargo
 from validator import Validator
 
 
@@ -15,9 +18,14 @@ class App:
 
     def add_cargo(self):
 
-        procceed = input("Add Cargo Item? Y/N: ")
-        if procceed == "N" or procceed == "n":
-            return False
+        danger_level = None
+        requires_cooling = None
+        speacial_cargo_flag = False
+
+        is_special_cargo = input("Is it special cargo? (Y/N) ")
+        if is_special_cargo == "Y":
+            speacial_cargo_flag = True
+
 
         cname = input("Enter Cargo Name: (Enter ** to exit)")
         if self._cut_the_process(cname):
@@ -48,37 +56,129 @@ class App:
             if self._cut_the_process(cplanet):
                 return False
 
-        ci = CargoItem(cname, cweight, cplanet)
-        self._cs.add_item(ci)
+        if speacial_cargo_flag:
+
+            while True:
+                try:
+                    inp = input("Enter Cargo Danger Lever: (Enter ** to exit)")
+                    if inp == "**":
+                        self._cut_the_process(cplanet)
+                        return False
+
+                    inp = int(inp)
+                    if inp < 1 or inp > 5:
+                        print("Cargo Danger Lever must be between 1 and 5")
+                        break
+                    danger_level= inp
+
+                except ValueError:
+                    print("Please enter numbers only")
+
+            while True:
+
+                try:
+                    inp = input("Is cargo requires cooling: (Enter ** to exit) \n possible values 1 | 0 \n")
+                    if inp == "**":
+                        self._cut_the_process(cplanet)
+                        return False
+                    inp = int(inp)
+                    requires_cooling = inp
+                except ValueError:
+                    print("Please enter numbers only")
+
+                ci = SpecialCargo(cname, cweight, cplanet,danger_level,requires_cooling )
+                self._cs.add_item(ci)
+
+        else:
+            ci = CargoItem(cname, cweight, cplanet)
+            self._cs.add_item(ci)
+
+        return None
 
     def remove_cargo(self):
 
-        # print(self._cs.cargo_items[0]['itemid'])
-        str_options = ""
-        cc = 0
-        for item in self._cs.cargo_items:
-            str_options += "" + str(cc) + " " + item["name"] + "\n"
-            cc += 1
-        itm = input(str_options)
+        items = self._cs.get_all_items()
+        print(self._cs.get_all_items())
 
-        print(self._cs.cargo_items)
-        self._cs.remove_item(self._cs.cargo_items[int(itm)]['itemid'])
+        if not items:
+            print("Cargo Item Not Found")
+            return
+
+        while True:
+            try:
+                itm = input("Enter item id: (type ** to main menu) ")
+                if itm == "**":
+                    self._main_menu()
+                    return False
+                itm = int(itm)
+                self._cs.remove_item(itm)
+
+            except ValueError:
+                print("Please enter numbers only")
 
     def find_cargo(self):
-        print("Print Cargo")
+        print("*** Find Cargo Item ***")
+
+        while True:
+            try:
+                itm = input("Enter item id: (type ** to main menu) ")
+                if itm == "**":
+                    self._main_menu()
+                    return None
+                itm = int(itm)
+
+                if self._cs.find_item_by_id(itm):
+                    print("Cargo Item Found")
+                    print(self._cs.find_item_by_id(itm))
+                else:
+                    print("Cargo Item Not Found")
+
+            except ValueError:
+                print("Please enter numbers only")
 
     def show_total_weight(self):
         print("Show Total Weight")
 
+    def show_all_items(self):
+        for item in self._cs.get_all_items():
+            print(item)
+
+
+    def _main_menu(self):
+        while True:
+
+            cs = CargoStation()
+            items = cs.get_all_items()
+            main_menu = "1: Add cargo item \n"
+            if items:
+                main_menu += "2: Remove cargo item\n"
+            if items:
+                main_menu += "3: Find cargo item\n"
+            if items:
+                main_menu += "4: Show total weight\n"
+            if items:
+                main_menu += "5: Show all items \n"
+            main_menu += "6: Exit"
+            try:
+                option = int(input(
+                    'Choose an option: \n' + main_menu))
+                option = int(option)
+                if option == 1:
+                    self.add_cargo()
+                if option == 2 and items:
+                    self.remove_cargo()
+                if option == 3 and items:
+                    self.find_cargo()
+                if option == 4 and items:
+                    self.show_total_weight()
+                if option == 5 and items:
+                    self.show_all_items()
+                if option == 6 and items:
+                    return
+                if option > 6:
+                    exit(0)
+            except ValueError:
+                print("Please enter numbers only")
+
     def run(self):
-
-        option = ""
-        while option != 'exit':
-
-            option = int(input(
-                'Choose an option: \n 1: Add cargo item \n 2: Remove cargo item \n 3: Find cargo item \n 4: Show total weight \n 5: Exit \n'))
-
-            if option == 1:
-                self.add_cargo()
-            if option == 2:
-                self.remove_cargo()
+        self._main_menu()
