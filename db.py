@@ -1,6 +1,8 @@
 import json
 import os
 
+from error_logger import ErrorLogger
+
 
 class Db:
     _file = "db.json"
@@ -30,9 +32,10 @@ class Db:
             self._fix_empty_db()
             return []
 
-    def _fix_empty_db(self):
+    def _fix_empty_db(self) -> None:
         with open(self._file, "w", encoding="utf-8") as file:
             json.dump([], file, indent=4)
+        ErrorLogger.write_log( f"DB : {self._file} was found broken and has been fixed.")
 
     def insert_item(self, item: dict) -> bool:
 
@@ -42,40 +45,38 @@ class Db:
             return True
         return False
 
-    def delete_item(self, itemid: int) -> None:
-
-        print("***before***")
-        print(self._dbfile)
-
-        for item in self._dbfile:
-            if item["itemid"] == itemid:
+    def delete_item(self, item) -> None:
+        for itm in self._dbfile:
+            if itm.get("itemid") == item["itemid"]:
                 self._dbfile.remove(item)
-
-
-
         self._update_db()
 
     def _update_db(self) -> bool:
         try:
             with open(self._file, "w", encoding="utf-8") as file:
                 json.dump(self._dbfile, file, indent=4)
+                ErrorLogger.write_log(f"DB updated")
+
             return True
 
         except TypeError as e:
             print("Data cannot be converted to JSON:", e)
+            ErrorLogger.write_log( f"{e}")
+
             return False
 
         except OSError as e:
             print("File write error:", e)
+            ErrorLogger.write_log( f"{e}")
             return False
 
     def get_item_by_id(self, itemid: str) -> dict:
         for item in self._dbfile:
-            if item["itemid"] == itemid:
+            if item.get("itemid") == itemid:
                 return item
         return {}
 
-    def get_all_items(self):
+    def get_all_items(self) -> list:
         with open( self._file, 'r') as file:
             data = json.load(file)
         return data

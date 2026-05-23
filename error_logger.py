@@ -1,9 +1,9 @@
-import json
 import os
 import time
 
 
 class ErrorLogger:
+
 
     _file = "log.txt"
 
@@ -15,6 +15,11 @@ class ErrorLogger:
             with open(self._file, "a") as f:
                 pass  # File is created and immediately closed
 
-    def write_log(self, message):
-        with open(self._file, "a") as f:
+    def get_file(self):
+        return self._file
+
+
+    @staticmethod
+    def write_log(message):
+        with open(ErrorLogger._file, "a") as f:
             f.write(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + ": " + message + "\n")

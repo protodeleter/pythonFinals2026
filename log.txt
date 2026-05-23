@@ -1,1 +1,4 @@
 2026-05-20 19:48:43: asfasf
+2026-05-23 16:02:04: Item {'itemid': 1, 'cargo_weight': 12.0, 'cargo_name': 'asf', 'requires_cooling': None, 'danger_level': None} was removed
+2026-05-23 16:02:54: Cargo Station: Item 3 was added
+2026-05-23 16:06:47: Item asf was removed

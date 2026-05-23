@@ -1,5 +1,6 @@
 from importlib.metadata import requires
 
+from CargoNotFoundError import CargoNotFoundError
 from cargo_item import CargoItem
 from cargo_station import CargoStation
 from db import Db
@@ -18,12 +19,12 @@ class App:
 
     def add_cargo(self):
 
-        danger_level = None
-        requires_cooling = None
         speacial_cargo_flag = False
 
-        is_special_cargo = input("Is it special cargo? (Y/N) ")
-        if is_special_cargo == "Y":
+        is_special_cargo = input("Is it special cargo? (Y) ")
+
+
+        if is_special_cargo == "Y" or is_special_cargo == "y" :
             speacial_cargo_flag = True
 
 
@@ -36,17 +37,17 @@ class App:
             if self._cut_the_process(cname):
                 return False
 
-        cweight = input("Enter Cargo Weight: (Enter ** to exit)")
-        if self._cut_the_process(cweight):
+        # cweight = input("Enter Cargo Weight: (Enter ** to exit)")
+        # if self._cut_the_process(cweight):
+        #     return False
+
+        cweight = self._cs.get_cargo_weight()
+
+        if not cweight:
             return False
 
-        while cweight == "" or not Validator.validate_positive_numbers(cweight) and not cweight == "**":
-            print("Cargo weight must be a positive number. (Enter ** to exit)")
-            cweight = input("Enter Cargo Weight: ")
-            if self._cut_the_process(cweight):
-                return False
 
-        cweight = float(cweight)
+
 
         cplanet = input("Enter Cargo Planet: (Enter ** to exit)")
         if self._cut_the_process(cplanet):
@@ -56,38 +57,45 @@ class App:
             if self._cut_the_process(cplanet):
                 return False
 
-        if speacial_cargo_flag:
 
+        if speacial_cargo_flag:
             while True:
                 try:
-                    inp = input("Enter Cargo Danger Lever: (Enter ** to exit)")
+                    inp = input("Enter Cargo Danger Level: (Enter ** to exit) ")
+
                     if inp == "**":
                         self._cut_the_process(cplanet)
                         return False
 
                     inp = int(inp)
+
                     if inp < 1 or inp > 5:
-                        print("Cargo Danger Lever must be between 1 and 5")
+                        print("Cargo Danger Level must be between 1 and 5")
+                    else:
+                        danger_level = inp
                         break
-                    danger_level= inp
 
                 except ValueError:
                     print("Please enter numbers only")
 
             while True:
-
                 try:
                     inp = input("Is cargo requires cooling: (Enter ** to exit) \n possible values 1 | 0 \n")
                     if inp == "**":
                         self._cut_the_process(cplanet)
                         return False
                     inp = int(inp)
-                    requires_cooling = inp
+                    if inp not in (0, 1):
+                        print("Cargo Requires cooling must be between 1 and 0")
+                    else:
+                        requires_cooling = inp
+                        break
+
                 except ValueError:
                     print("Please enter numbers only")
 
-                ci = SpecialCargo(cname, cweight, cplanet,danger_level,requires_cooling )
-                self._cs.add_item(ci)
+            ci = SpecialCargo(cname, cweight, cplanet,danger_level,requires_cooling )
+            self._cs.add_item(ci)
 
         else:
             ci = CargoItem(cname, cweight, cplanet)
@@ -95,14 +103,15 @@ class App:
 
         return None
 
-    def remove_cargo(self):
+    def remove_cargo(self) -> bool:
 
+        print("*** Remove Cargo Item ***")
         items = self._cs.get_all_items()
         print(self._cs.get_all_items())
 
         if not items:
             print("Cargo Item Not Found")
-            return
+            return False
 
         while True:
             try:
@@ -110,15 +119,18 @@ class App:
                 if itm == "**":
                     self._main_menu()
                     return False
-                itm = int(itm)
-                self._cs.remove_item(itm)
-
+                item_id = int(itm)
+                self._cs.remove_item(item_id)
+                return True
             except ValueError:
                 print("Please enter numbers only")
+            except CargoNotFoundError as e:
+                print(e)
+                return True
+
 
     def find_cargo(self):
         print("*** Find Cargo Item ***")
-
         while True:
             try:
                 itm = input("Enter item id: (type ** to main menu) ")
@@ -126,25 +138,30 @@ class App:
                     self._main_menu()
                     return None
                 itm = int(itm)
-
-                if self._cs.find_item_by_id(itm):
-                    print("Cargo Item Found")
-                    print(self._cs.find_item_by_id(itm))
-                else:
-                    print("Cargo Item Not Found")
-
+                item = self._cs.find_item_by_id(itm)
+                print(item)
+                return True
             except ValueError:
                 print("Please enter numbers only")
 
-    def show_total_weight(self):
-        print("Show Total Weight")
+            except CargoNotFoundError as e:
+                print("****")
+                print(e)
+                print("****")
 
-    def show_all_items(self):
+                return False
+
+    def show_total_weight(self) -> None:
+        print("*** Show Total Weight ***")
+        print(self._cs.get_total_weight())
+
+    def show_all_items(self) -> None:
+        print("**** All Items ***")
         for item in self._cs.get_all_items():
             print(item)
 
 
-    def _main_menu(self):
+    def _main_menu(self) -> None:
         while True:
 
             cs = CargoStation()
@@ -173,10 +190,9 @@ class App:
                     self.show_total_weight()
                 if option == 5 and items:
                     self.show_all_items()
-                if option == 6 and items:
-                    return
-                if option > 6:
+                if option == 6:
                     exit(0)
+
             except ValueError:
                 print("Please enter numbers only")
 

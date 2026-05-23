@@ -1,12 +1,10 @@
 import random
 
 from db import Db
-from generateid import GenerateID
 
 
 class CargoItem:
 
-    itemid = 0
 
 
     def __init__(self, name, weight, origin_planet):
@@ -18,19 +16,19 @@ class CargoItem:
 
 
     @property
-    def item_id(self):
+    def item_id(self) -> int:
         return self._itemid
 
     @property
-    def cargo_name(self):
+    def cargo_name(self) -> str:
         return self._name
 
     @property
-    def cargo_weight(self):
+    def cargo_weight(self) -> float:
         return self._weight
 
     @property
-    def cargo_origin_planet(self):
+    def cargo_origin_planet(self) -> str:
         return self._origin_planet
 
     def _assign_id(self) -> int:
@@ -38,7 +36,7 @@ class CargoItem:
         return db.assign_id()
 
 
-    def __str__(self):
+    def __str__(self) -> str:
         return "Cargo Item with id {} named \"{}\" with weight {} and origin planet {}".format(self._itemid, self._name,
                                                                                                self.cargo_weight,
                                                                                                self.cargo_origin_planet)

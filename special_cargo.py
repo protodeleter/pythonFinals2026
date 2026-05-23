@@ -15,32 +15,32 @@ class SpecialCargo(CargoItem):
         self._requires_cooling:bool = requires_cooling
 
     @property
-    def danger_level(self):
+    def danger_level(self) -> int:
         return self._danger_level
 
     @danger_level.setter
-    def danger_level(self, value):
+    def danger_level(self, value) -> None:
         self._danger_level = value
 
     @property
-    def requires_cooling(self):
+    def requires_cooling(self) -> bool:
         return self._requires_cooling
 
     @requires_cooling.setter
-    def requires_cooling(self, value):
+    def requires_cooling(self, value) -> None:
         self._requires_cooling = value
 
     @property
-    def weight(self):
+    def weight(self) -> float:
         return self._weight
     @weight.setter
-    def weight(self, value):
+    def weight(self, value) -> None:
         self._weight = value
     @property
-    def name(self):
+    def name(self) -> str:
         return self._name
     @name.setter
-    def name(self, value):
+    def name(self, value) -> None:
         self._name = value
 
     def get_weight(self):
