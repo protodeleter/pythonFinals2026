@@ -20,6 +20,6 @@ class ErrorLogger:
 
 
     @staticmethod
-    def write_log(message):
+    def write_log( error ,message , method):
         with open(ErrorLogger._file, "a") as f:
-            f.write(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + ": " + message + "\n")
+            f.write(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + ": " +  error + " | "  + message +" | "+ method + "\n")

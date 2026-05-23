@@ -1,4 +1,13 @@
-2026-05-20 19:48:43: asfasf
-2026-05-23 16:02:04: Item {'itemid': 1, 'cargo_weight': 12.0, 'cargo_name': 'asf', 'requires_cooling': None, 'danger_level': None} was removed
-2026-05-23 16:02:54: Cargo Station: Item 3 was added
-2026-05-23 16:06:47: Item asf was removed
+2026-05-23 23:28:00: info | Add cargo started | app
+2026-05-23 23:28:01: info | Speacial cargo | app
+2026-05-23 23:28:03: info | Cargo name asf | app
+2026-05-23 23:28:04: info | Cargo weight 3.0 | app
+2026-05-23 23:28:04: info | Cargo planet va | app
+2026-05-23 23:28:06: info | Cargo danger level 2 | app
+2026-05-23 23:28:08: info | Cargo requires_cooling 1 | app
+2026-05-23 23:28:08: info | DB updated | db
+2026-05-23 23:28:08: info | Cargo Station: Item 9 was added | cargo_station
+2026-05-23 23:29:49: info | Add cargo started | app
+2026-05-23 23:29:50: info | Speacial cargo | app
+2026-05-23 23:29:52: info | Cargo name asf | app
+2026-05-23 23:29:54: info | Process stopped by user  | cargo_station

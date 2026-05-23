@@ -55,19 +55,17 @@ class Db:
         try:
             with open(self._file, "w", encoding="utf-8") as file:
                 json.dump(self._dbfile, file, indent=4)
-                ErrorLogger.write_log(f"DB updated")
+                ErrorLogger.write_log( "info" ,"DB updated" , __name__ )
 
             return True
 
         except TypeError as e:
             print("Data cannot be converted to JSON:", e)
-            ErrorLogger.write_log( f"{e}")
 
             return False
 
         except OSError as e:
             print("File write error:", e)
-            ErrorLogger.write_log( f"{e}")
             return False
 
     def get_item_by_id(self, itemid: str) -> dict:

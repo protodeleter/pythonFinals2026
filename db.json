@@ -1,9 +1,74 @@
 [
     {
-        "itemid": 3,
-        "cargo_weight": 12.0,
+        "itemid": 1,
         "cargo_name": "asf",
+        "cargo_weight": 2222222.0,
+        "cargo_origin_planet": "bbbbbbbb",
         "requires_cooling": null,
         "danger_level": null
+    },
+    {
+        "itemid": 2,
+        "cargo_name": "vzzzzzz",
+        "cargo_weight": 5555.0,
+        "cargo_origin_planet": "xxxxxxxxx",
+        "requires_cooling": 0,
+        "danger_level": 5
+    },
+    {
+        "itemid": 3,
+        "cargo_name": "agasgz",
+        "cargo_weight": 2.0,
+        "cargo_origin_planet": "bd",
+        "requires_cooling": null,
+        "danger_level": null
+    },
+    {
+        "itemid": 4,
+        "cargo_name": "1651",
+        "cargo_weight": 23.0,
+        "cargo_origin_planet": "165",
+        "requires_cooling": null,
+        "danger_level": null
+    },
+    {
+        "itemid": 5,
+        "cargo_name": "asg",
+        "cargo_weight": 123.0,
+        "cargo_origin_planet": "zxvzx",
+        "requires_cooling": 1,
+        "danger_level": 5
+    },
+    {
+        "itemid": 6,
+        "cargo_name": "asf",
+        "cargo_weight": 21.0,
+        "cargo_origin_planet": "cvas",
+        "requires_cooling": 1,
+        "danger_level": 2
+    },
+    {
+        "itemid": 7,
+        "cargo_name": "ags",
+        "cargo_weight": 2.0,
+        "cargo_origin_planet": "f2",
+        "requires_cooling": null,
+        "danger_level": null
+    },
+    {
+        "itemid": 8,
+        "cargo_name": "af",
+        "cargo_weight": 32.0,
+        "cargo_origin_planet": "asf",
+        "requires_cooling": null,
+        "danger_level": null
+    },
+    {
+        "itemid": 9,
+        "cargo_name": "asf",
+        "cargo_weight": 3.0,
+        "cargo_origin_planet": "va",
+        "requires_cooling": 1,
+        "danger_level": 2
     }
 ]
