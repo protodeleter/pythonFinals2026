@@ -1,5 +1,6 @@
 import random
 
+import exceptions
 from CargoNotFoundError import CargoNotFoundError
 from cargo_item import CargoItem
 from db import Db
@@ -40,33 +41,29 @@ class CargoStation:
             "danger_level" : danger_level
         }
 
-
-        if db.insert_item(item_data):
+        try:
+            db.insert_item(item_data)
             print("****Item Added****")
-            ErrorLogger.write_log( "info",f"Cargo Station: Item {int(item.item_id)} was added" , __name__ )
-        else:
+            ErrorLogger.write_log("info", f"Cargo Station: Item {int(item.item_id)} was added", __name__)
+        except exceptions.GeneralError:
             print("Something went wrong")
 
     def remove_item(self, itemid: int) -> None:
         item_to_delete = self.find_item_by_id(itemid)
-
         try:
             self._db.delete_item(item_to_delete)
-            ErrorLogger.write_log( f"Item {item_to_delete.get("cargo_name")} was removed")
-
-        except CargoNotFoundError:
-            print("Item not found")
-
-
-
+            print(f"****Item {item_to_delete.get("itemid")} {item_to_delete.get("cargo_name")} Removed****")
+            ErrorLogger.write_log( "info",f"Item {item_to_delete.get("cargo_name")} was removed", __name__)
+        except exceptions.CargoNotFoundError:
+            print(f"Item {item_to_delete.get("itemid")} not found")
 
     def find_item_by_id(self, itemid: int) -> CargoItem | SpecialCargo:
         for ci in self.get_all_items():
             if ci.get("itemid") == itemid:
                 return ci
 
-        raise CargoNotFoundError("Item not found")
-
+        ErrorLogger.write_log( "Error", f"Item {itemid} not found", __name__)
+        raise exceptions.CargoNotFoundError(f"Item {itemid} not found")
 
     def get_total_weight(self) -> float:
         return sum(ci.get("cargo_weight", 0) for ci in self.get_all_items())
@@ -84,8 +81,6 @@ class CargoStation:
             ErrorLogger.write_log("info", "Process stopped by user ", __name__)
             return True
         return None
-
-
     def get_cargo_planet(self) -> str | bool:
 
         while True:
@@ -100,14 +95,10 @@ class CargoStation:
                 cplanet = cplanet.strip()
                 break
 
-            except ValueError:
-                print("Cargo not found")
+            except exceptions.GeneralError:
+                print("Something went wrong")
 
         return cplanet
-
-
-
-
     def get_cargo_name(self) -> None | str :
         while True:
             try:
@@ -120,11 +111,9 @@ class CargoStation:
                 cname = cname.strip()
                 break
 
-            except CargoNotFoundError:
-                print("Cargo not found")
+            except exceptions.GeneralError:
+                print("Something went wrong")
         return cname
-
-
     def get_cargo_weight(self) -> float|None:
         cargo_weight = 0
         while True:
@@ -144,7 +133,6 @@ class CargoStation:
             except ValueError:
                 print("Please enter numbers only")
         return cargo_weight
-
     def get_danger_level(self) -> None | int:
         while True:
             try:
@@ -162,7 +150,6 @@ class CargoStation:
             except ValueError:
                 print("Please enter numbers only")
         return danger_level
-
     def get_requires_cooling(self) -> None | int:
 
         while True:

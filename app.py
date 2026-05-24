@@ -1,13 +1,12 @@
 from importlib.metadata import requires
 
+import exceptions
 from CargoNotFoundError import CargoNotFoundError
 from cargo_item import CargoItem
 from cargo_station import CargoStation
-from db import Db
 from error_logger import ErrorLogger
 from special_cargo import SpecialCargo
-from validator import Validator
-
+from exceptions import *
 
 class App:
     def __init__(self, cargo_station):
@@ -18,7 +17,7 @@ class App:
             return False
         return None
 
-    def add_cargo(self):
+    def _add_cargo(self):
 
         ErrorLogger.write_log( "info" , "Add cargo started" , __name__ )
 
@@ -58,22 +57,20 @@ class App:
         else:
             ci = CargoItem(cname, cweight, cplanet)
 
-        self._cs.add_item(ci)
-        self.show_all_items()
+        res = self._cs.add_item(ci)
+
+        print(res)
+        self._show_all_items()
 
         return None
 
-    def remove_cargo(self) -> bool:
+    def _remove_cargo(self) -> bool:
 
         ErrorLogger.write_log("info", "Remove cargo started ", __name__)
-
         print("*** Remove Cargo Item ***")
         items = self._cs.get_all_items()
-        print(self._cs.get_all_items())
+        print(self._show_all_items())
 
-        if not items:
-            print("Cargo Item Not Found")
-            return False
 
         while True:
             try:
@@ -91,7 +88,7 @@ class App:
                 return True
 
 
-    def find_cargo(self):
+    def _find_cargo(self):
         print("*** Find Cargo Item ***")
         while True:
             try:
@@ -113,11 +110,11 @@ class App:
 
                 return False
 
-    def show_total_weight(self) -> None:
+    def _show_total_weight(self) -> None:
         print("*** Show Total Weight ***")
-        print(self._cs.get_total_weight())
+        print(f"Total weight is {self._cs.get_total_weight()} ")
 
-    def show_all_items(self) -> None:
+    def _show_all_items(self) -> None:
         print("**** All Items ***")
         for item in self._cs.get_all_items():
             print( f"Item id: {item["itemid"]} | name: {item["cargo_name"]} | weight: {item["cargo_weight"]} | planet: {item["cargo_origin_planet"]} | danger_level: {item["danger_level"]} | requires_cooling: {item["requires_cooling"]} " )
@@ -144,19 +141,19 @@ class App:
                     'Choose an option: \n' + main_menu))
                 option = int(option)
                 if option == 1:
-                    self.add_cargo()
+                    self._add_cargo()
                 if option == 2 and items:
-                    self.remove_cargo()
+                    self._remove_cargo()
                 if option == 3 and items:
-                    self.find_cargo()
+                    self._find_cargo()
                 if option == 4 and items:
-                    self.show_total_weight()
+                    self._show_total_weight()
                 if option == 5 and items:
-                    self.show_all_items()
+                    self._show_all_items()
                 if option == 6:
                     exit(0)
 
-            except ValueError:
+            except exceptions.NumbersError as e:
                 print("Please enter numbers only")
 
     def run(self):

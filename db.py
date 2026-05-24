@@ -35,21 +35,21 @@ class Db:
     def _fix_empty_db(self) -> None:
         with open(self._file, "w", encoding="utf-8") as file:
             json.dump([], file, indent=4)
-        ErrorLogger.write_log( f"DB : {self._file} was found broken and has been fixed.")
+        ErrorLogger.write_log( "Info" , f"DB : {self._file} was found broken and has been fixed." , __name__ )
 
-    def insert_item(self, item: dict) -> bool:
-
-
+    def insert_item(self, item: dict) -> dict:
         self._dbfile.append(item)
         if self._update_db():
-            return True
-        return False
+            return item
+        return {}
 
-    def delete_item(self, item) -> None:
+    def delete_item(self, item) -> dict:
         for itm in self._dbfile:
             if itm.get("itemid") == item["itemid"]:
                 self._dbfile.remove(item)
+                return item
         self._update_db()
+        return {}
 
     def _update_db(self) -> bool:
         try:
