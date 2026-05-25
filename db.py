@@ -96,3 +96,5 @@ class Db:
     def assign_id(self):
         return self._increment_max_id()
 
+
+

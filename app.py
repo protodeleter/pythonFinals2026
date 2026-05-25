@@ -17,7 +17,7 @@ class App:
             return False
         return None
 
-    def _add_cargo(self):
+    def _add_cargo(self) -> dict | bool:
 
         ErrorLogger.write_log( "info" , "Add cargo started" , __name__ )
 
@@ -27,7 +27,7 @@ class App:
             speacial_cargo_flag = True
             ErrorLogger.write_log("info", "Speacial cargo", __name__)
 
-        cname = self._cs.get_cargo_name()
+        cname = self._cs.get_cargo_name_input()
         if cname is None:
             return False
         ErrorLogger.write_log("info", "Cargo name " + cname, __name__)
@@ -58,11 +58,12 @@ class App:
             ci = CargoItem(cname, cweight, cplanet)
 
         res = self._cs.add_item(ci)
+        if res:
+            print("****Item Added****")
 
-        print(res)
         self._show_all_items()
 
-        return None
+        return res
 
     def _remove_cargo(self) -> bool:
 
@@ -79,7 +80,9 @@ class App:
                     self._main_menu()
                     return False
                 item_id = int(itm)
-                self._cs.remove_item(item_id)
+                if self._cs.remove_item(item_id):
+                    print(f"****Item {item_id} Removed****")
+
                 return True
             except ValueError:
                 print("Please enter numbers only")
@@ -155,6 +158,7 @@ class App:
 
             except exceptions.NumbersError as e:
                 print("Please enter numbers only")
+
 
     def run(self):
         self._main_menu()

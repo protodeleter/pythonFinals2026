@@ -158,3 +158,119 @@
 2026-05-24 17:53:16: info | DB updated | db
 2026-05-24 17:53:16: info | Cargo Station: Item 22 was added | cargo_station
 2026-05-24 17:53:29: Error | Item 222 not found | cargo_station
+2026-05-25 16:28:12: info | Add cargo started | app
+2026-05-25 16:28:16: info | Cargo name asf | app
+2026-05-25 16:28:17: info | Cargo weight 12.0 | app
+2026-05-25 16:28:17: info | Cargo planet asf | app
+2026-05-25 16:28:17: info | DB updated | db
+2026-05-25 16:28:17: info | Cargo Station: Item 23 was added | cargo_station
+2026-05-25 16:28:21: info | Add cargo started | app
+2026-05-25 16:28:24: info | Cargo name asf | app
+2026-05-25 16:28:32: info | Cargo weight 123123.0 | app
+2026-05-25 16:28:33: info | Cargo planet asfasf | app
+2026-05-25 16:28:33: info | DB updated | db
+2026-05-25 16:28:33: info | Cargo Station: Item 24 was added | cargo_station
+2026-05-25 16:43:02: info | Add cargo started | app
+2026-05-25 16:43:04: info | Cargo name asf | app
+2026-05-25 16:43:05: info | Cargo weight 123.0 | app
+2026-05-25 16:43:05: info | Cargo planet asf | app
+2026-05-25 16:43:05: info | DB updated | db
+2026-05-25 16:43:05: info | Cargo Station: Item 25 was added | cargo_station
+2026-05-25 16:43:47: info | Add cargo started | app
+2026-05-25 16:43:49: info | Cargo name asf | app
+2026-05-25 16:43:50: info | Cargo weight 124.0 | app
+2026-05-25 16:43:51: info | Cargo planet asf | app
+2026-05-25 16:43:51: info | DB updated | db
+2026-05-25 16:43:51: info | Cargo Station: Item 26 was added | cargo_station
+2026-05-25 16:45:17: info | Add cargo started | app
+2026-05-25 16:45:20: info | Cargo name asfasf | app
+2026-05-25 16:45:20: info | Cargo weight 123.0 | app
+2026-05-25 16:45:21: info | Cargo planet asf | app
+2026-05-25 16:45:21: info | DB updated | db
+2026-05-25 16:45:21: info | Cargo Station: Item 27 was added | cargo_station
+2026-05-25 16:50:35: info | DB updated | db
+2026-05-25 16:50:35: info | Cargo Station: Item 28 was added | cargo_station
+2026-05-25 17:25:47: info | DB updated | db
+2026-05-25 17:25:47: info | Cargo Station: Item 29 was added | cargo_station
+2026-05-25 17:26:54: info | DB updated | db
+2026-05-25 17:26:54: info | Cargo Station: Item 30 was added | cargo_station
+2026-05-25 17:27:23: info | DB updated | db
+2026-05-25 17:27:23: info | Cargo Station: Item 31 was added | cargo_station
+2026-05-25 17:28:02: info | DB updated | db
+2026-05-25 17:28:02: info | Cargo Station: Item 32 was added | cargo_station
+2026-05-25 17:28:56: info | DB updated | db
+2026-05-25 17:28:56: info | Cargo Station: Item 33 was added | cargo_station
+2026-05-25 17:29:19: info | DB updated | db
+2026-05-25 17:29:19: info | Cargo Station: Item 34 was added | cargo_station
+2026-05-25 17:29:48: info | DB updated | db
+2026-05-25 17:29:48: info | Cargo Station: Item 35 was added | cargo_station
+2026-05-25 17:29:58: info | DB updated | db
+2026-05-25 17:29:58: info | Cargo Station: Item 36 was added | cargo_station
+2026-05-25 17:30:18: info | DB updated | db
+2026-05-25 17:30:18: info | Cargo Station: Item 37 was added | cargo_station
+2026-05-25 17:31:30: info | DB updated | db
+2026-05-25 17:31:30: info | Cargo Station: Item 38 was added | cargo_station
+2026-05-25 17:31:57: info | DB updated | db
+2026-05-25 17:31:57: info | Cargo Station: Item 39 was added | cargo_station
+2026-05-25 17:32:23: info | DB updated | db
+2026-05-25 17:32:23: info | Cargo Station: Item 40 was added | cargo_station
+2026-05-25 17:32:44: info | DB updated | db
+2026-05-25 17:32:44: info | Cargo Station: Item 41 was added | cargo_station
+2026-05-25 17:37:47: info | DB updated | db
+2026-05-25 17:37:47: info | Cargo Station: Item 42 was added | cargo_station
+2026-05-25 17:38:25: info | DB updated | db
+2026-05-25 17:38:25: info | Cargo Station: Item 43 was added | cargo_station
+2026-05-25 17:38:25: info | DB updated | db
+2026-05-25 17:38:25: info | Cargo Station: Item 44 was added | cargo_station
+2026-05-25 17:56:25: info | DB updated | db
+2026-05-25 17:56:25: info | Cargo Station: Item 45 was added | cargo_station
+2026-05-25 17:56:25: info | DB updated | db
+2026-05-25 17:56:25: info | Cargo Station: Item 46 was added | cargo_station
+2026-05-25 17:56:30: info | DB updated | db
+2026-05-25 17:56:30: info | Cargo Station: Item 47 was added | cargo_station
+2026-05-25 17:56:30: info | DB updated | db
+2026-05-25 17:56:30: info | Cargo Station: Item 48 was added | cargo_station
+2026-05-25 17:58:02: info | DB updated | db
+2026-05-25 17:58:02: info | Cargo Station: Item 49 was added | cargo_station
+2026-05-25 17:58:02: info | DB updated | db
+2026-05-25 17:58:02: info | Cargo Station: Item 50 was added | cargo_station
+2026-05-25 18:01:31: info | DB updated | db
+2026-05-25 18:01:31: info | Cargo Station: Item 51 was added | cargo_station
+2026-05-25 18:01:31: info | DB updated | db
+2026-05-25 18:01:31: info | Cargo Station: Item 52 was added | cargo_station
+2026-05-25 18:01:57: info | DB updated | db
+2026-05-25 18:01:57: info | Cargo Station: Item 53 was added | cargo_station
+2026-05-25 18:01:57: info | DB updated | db
+2026-05-25 18:01:57: info | Cargo Station: Item 54 was added | cargo_station
+2026-05-25 18:02:16: info | DB updated | db
+2026-05-25 18:02:16: info | Cargo Station: Item 55 was added | cargo_station
+2026-05-25 18:02:16: info | DB updated | db
+2026-05-25 18:02:16: info | Cargo Station: Item 56 was added | cargo_station
+2026-05-25 18:03:29: info | DB updated | db
+2026-05-25 18:03:29: info | Cargo Station: Item 57 was added | cargo_station
+2026-05-25 18:03:29: info | DB updated | db
+2026-05-25 18:03:29: info | Cargo Station: Item 58 was added | cargo_station
+2026-05-25 18:04:32: info | DB updated | db
+2026-05-25 18:04:32: info | Cargo Station: Item 59 was added | cargo_station
+2026-05-25 18:04:32: info | DB updated | db
+2026-05-25 18:04:32: info | Cargo Station: Item 60 was added | cargo_station
+2026-05-25 18:04:47: info | DB updated | db
+2026-05-25 18:04:47: info | Cargo Station: Item 61 was added | cargo_station
+2026-05-25 18:04:47: info | DB updated | db
+2026-05-25 18:04:47: info | Cargo Station: Item 62 was added | cargo_station
+2026-05-25 18:06:11: info | DB updated | db
+2026-05-25 18:06:11: info | Cargo Station: Item 63 was added | cargo_station
+2026-05-25 18:06:11: info | DB updated | db
+2026-05-25 18:06:11: info | Cargo Station: Item 64 was added | cargo_station
+2026-05-25 18:06:19: info | DB updated | db
+2026-05-25 18:06:19: info | Cargo Station: Item 65 was added | cargo_station
+2026-05-25 18:06:19: info | DB updated | db
+2026-05-25 18:06:19: info | Cargo Station: Item 66 was added | cargo_station
+2026-05-25 18:06:28: info | Add cargo started | app
+2026-05-25 18:06:50: info | Add cargo started | app
+2026-05-25 18:06:53: info | Cargo name asf | app
+2026-05-25 18:06:54: info | Cargo weight 12.0 | app
+2026-05-25 18:06:55: info | Cargo planet asf | app
+2026-05-25 18:06:55: info | DB updated | db
+2026-05-25 18:06:55: info | Cargo Station: Item 67 was added | cargo_station
+2026-05-25 18:15:04: info | Add cargo started | app

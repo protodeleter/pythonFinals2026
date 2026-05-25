@@ -8,7 +8,13 @@ class Validator:
     @staticmethod
     def minimum_length(value, length):
 
-        if len(value) < length:
+        if len(value) < length or value == '':
+            return False
+        return True
+
+    @staticmethod
+    def validate_name(value):
+        if value == '' or Validator.minimum_length(value, 2):
             return False
         return True
 

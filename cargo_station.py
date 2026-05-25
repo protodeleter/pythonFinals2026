@@ -23,7 +23,8 @@ class CargoStation:
     def cargo_items(self, cargo_items: list):
         self._cargo_items = cargo_items
 
-    def add_item(self, item: CargoItem | SpecialCargo) -> None:
+    def add_item(self, item: CargoItem | SpecialCargo) -> dict | None:
+        res = None
         db = Db()
 
         cargo_name = getattr(item, "cargo_name", None)
@@ -42,20 +43,21 @@ class CargoStation:
         }
 
         try:
-            db.insert_item(item_data)
-            print("****Item Added****")
+            res = db.insert_item(item_data)
             ErrorLogger.write_log("info", f"Cargo Station: Item {int(item.item_id)} was added", __name__)
         except exceptions.GeneralError:
             print("Something went wrong")
 
-    def remove_item(self, itemid: int) -> None:
-        item_to_delete = self.find_item_by_id(itemid)
+        return res
+
+    def remove_item(self, itemid: int) -> dict:
         try:
-            self._db.delete_item(item_to_delete)
-            print(f"****Item {item_to_delete.get("itemid")} {item_to_delete.get("cargo_name")} Removed****")
+            item_to_delete= self._db.delete_item(itemid)
             ErrorLogger.write_log( "info",f"Item {item_to_delete.get("cargo_name")} was removed", __name__)
+            return item_to_delete
         except exceptions.CargoNotFoundError:
-            print(f"Item {item_to_delete.get("itemid")} not found")
+            print(f"Item {itemid} not found")
+        return {}
 
     def find_item_by_id(self, itemid: int) -> CargoItem | SpecialCargo:
         for ci in self.get_all_items():
@@ -99,35 +101,33 @@ class CargoStation:
                 print("Something went wrong")
 
         return cplanet
-    def get_cargo_name(self) -> None | str :
-        while True:
-            try:
-                cname = input("Enter Cargo Name: (Enter ** to exit)")
-                if self._cut_the_process(cname):
-                    return None
-                if cname == "" or not Validator.minimum_length(cname, 2):
-                    print("Cargo Name must be at least 2 characters")
-                    continue
-                cname = cname.strip()
-                break
+    def get_cargo_name_input(self) -> None | str :
 
-            except exceptions.GeneralError:
-                print("Something went wrong")
+        cname = ""
+        while True:
+            inp = input("Enter Cargo Name: (Enter ** to exit)")
+            if self._cut_the_process(inp):
+                return None
+
+            if not self.get_cargo_name(inp):
+                continue
+            cname = inp
+            break
         return cname
-    def get_cargo_weight(self) -> float|None:
+
+    def get_cargo_weight_input(self) -> float|None:
         cargo_weight = 0
         while True:
             try:
-                cweight = input("Enter Cargo Weight: (Enter ** to exit) ").strip()
-
-                if self._cut_the_process(cweight):
+                inp = input("Enter Cargo Weight: (Enter ** to exit) ").strip()
+                if self._cut_the_process(inp):
                     return None
 
                 if not Validator.validate_positive_numbers(cweight):
                     print("Cargo weight must be positive numbers")
                     continue
 
-                cargo_weight = float(cweight)
+                cargo_weight = self.get_cargo_weight(inp)
                 break
 
             except ValueError:
@@ -170,3 +170,24 @@ class CargoStation:
                 print("Please enter numbers only")
 
         return requires_cooling
+
+    def get_cargo_weight(self, weight: float) -> float:
+        if not Validator.validate_positive_numbers(weight):
+            raise ValueError("Cargo weight must be positive numbers")
+        weight = float(weight)
+        return weight
+
+    def get_cargo_name(self, cname: str) -> str | None:
+
+        try:
+            cname = Validator.validate_name(cname.strip())
+            return cname
+        except exceptions.GeneralError:
+            print("Something went wrong")
+            return None
+
+        if cname == "" or not Validator.minimum_length(cname, 2):
+            # raise exceptions.CargoNameError(f"Cargo Name {cname} not valid")
+            return None
+        cname = cname.strip()
+        return cname

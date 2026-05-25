@@ -9,3 +9,6 @@ class NumbersError(Exception):
 
 class GeneralError(Exception):
     pass
+
+class CargoNameError(Exception):
+    pass

@@ -31,6 +31,19 @@ class CargoItem:
     def cargo_origin_planet(self) -> str:
         return self._origin_planet
 
+    def set_cargo_weight(self, weight: float) -> None:
+        self._weight = weight
+
+    def set_cargo_name(self, name: str) -> None:
+        self._name = name
+
+    def set_cargo_origin_planet(self, planet_name: str) -> None:
+        self._origin_planet = planet_name
+
+    def set_cargo_item_id(self) -> None:
+        self._itemid = self._assign_id()
+
+
     def _assign_id(self) -> int:
         db = Db()
         return db.assign_id()
