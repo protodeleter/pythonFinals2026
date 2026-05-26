@@ -1,3 +1,6 @@
+import exceptions
+
+
 class Validator:
     def __init__(self):
         pass
@@ -8,19 +11,23 @@ class Validator:
     @staticmethod
     def minimum_length(value, length):
 
-        if len(value) < length or value == '':
+        try:
+            return len(value) > length
+        except exceptions.CargoNameError:
+            print("String must be greater than " + str(length) + " characters")
             return False
-        return True
 
     @staticmethod
     def validate_name(value):
-        if value == '' or Validator.minimum_length(value, 2):
+        if value == '' or not Validator.minimum_length(value, 2):
+            print("String must be greater than 2 characters")
             return False
         return True
 
     @staticmethod
-    def validate_positive_numbers( value):
+    def validate_positive_numbers( value) -> float | bool:
         try:
             return float(value) > 0
-        except ValueError:
+        except exceptions.CargoWeightPositiveError:
+            print("Value is not a positive number")
             return False

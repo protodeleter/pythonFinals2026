@@ -12,3 +12,5 @@ class GeneralError(Exception):
 
 class CargoNameError(Exception):
     pass
+class CargoWeightPositiveError(Exception):
+    pass

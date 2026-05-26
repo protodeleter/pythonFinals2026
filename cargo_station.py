@@ -83,24 +83,30 @@ class CargoStation:
             ErrorLogger.write_log("info", "Process stopped by user ", __name__)
             return True
         return None
-    def get_cargo_planet(self) -> str | bool:
 
+    def get_cargo_planet_input(self) -> str | bool:
         while True:
-            try:
-                cplanet = input("Enter Cargo Planet: (Enter ** to exit)")
-                if self._cut_the_process(cplanet):
-                    return False
-                if not Validator.minimum_length(cplanet, 1):
-                    print("Cargo Planet must not be empty")
-                    continue
+            cplanet = input("Enter Cargo Planet: (Enter ** to exit)")
+            if self._cut_the_process(cplanet):
+                return False
 
-                cplanet = cplanet.strip()
-                break
+            if not self.get_cargo_planet(cplanet):
+                continue
 
-            except exceptions.GeneralError:
-                print("Something went wrong")
-
+            cplanet = cplanet.strip()
+            break
         return cplanet
+
+    def get_cargo_planet(self, planet):
+        try:
+            planet = Validator.validate_name(planet.strip())
+            return planet
+
+        except exceptions.GeneralError:
+            print("Something went wrong")
+            return None
+
+
     def get_cargo_name_input(self) -> None | str :
 
         cname = ""
@@ -108,11 +114,11 @@ class CargoStation:
             inp = input("Enter Cargo Name: (Enter ** to exit)")
             if self._cut_the_process(inp):
                 return None
-
             if not self.get_cargo_name(inp):
                 continue
-            cname = inp
-            break
+            else:
+                cname = inp
+                break
         return cname
 
     def get_cargo_weight_input(self) -> float|None:
@@ -123,8 +129,7 @@ class CargoStation:
                 if self._cut_the_process(inp):
                     return None
 
-                if not Validator.validate_positive_numbers(cweight):
-                    print("Cargo weight must be positive numbers")
+                if not self.get_cargo_weight(inp):
                     continue
 
                 cargo_weight = self.get_cargo_weight(inp)
@@ -133,6 +138,7 @@ class CargoStation:
             except ValueError:
                 print("Please enter numbers only")
         return cargo_weight
+
     def get_danger_level(self) -> None | int:
         while True:
             try:
@@ -171,23 +177,16 @@ class CargoStation:
 
         return requires_cooling
 
-    def get_cargo_weight(self, weight: float) -> float:
-        if not Validator.validate_positive_numbers(weight):
-            raise ValueError("Cargo weight must be positive numbers")
-        weight = float(weight)
+    def get_cargo_weight(self, weight) -> float:
+
+        try:
+            weight = Validator.validate_positive_numbers(weight)
+
+        except exceptions.GeneralError:
+            print("Something went wrong")
         return weight
 
     def get_cargo_name(self, cname: str) -> str | None:
 
-        try:
-            cname = Validator.validate_name(cname.strip())
-            return cname
-        except exceptions.GeneralError:
-            print("Something went wrong")
-            return None
-
-        if cname == "" or not Validator.minimum_length(cname, 2):
-            # raise exceptions.CargoNameError(f"Cargo Name {cname} not valid")
-            return None
-        cname = cname.strip()
+        cname = Validator.validate_name(cname.strip())
         return cname

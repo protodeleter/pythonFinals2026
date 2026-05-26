@@ -274,3 +274,25 @@
 2026-05-25 18:06:55: info | DB updated | db
 2026-05-25 18:06:55: info | Cargo Station: Item 67 was added | cargo_station
 2026-05-25 18:15:04: info | Add cargo started | app
+2026-05-26 12:49:32: Info | DB : db.json was found broken and has been fixed. | db
+2026-05-26 12:49:34: info | Add cargo started | app
+2026-05-26 12:49:55: info | Add cargo started | app
+2026-05-26 12:50:15: info | Add cargo started | app
+2026-05-26 12:50:55: info | Add cargo started | app
+2026-05-26 12:51:10: info | Add cargo started | app
+2026-05-26 12:51:30: info | Add cargo started | app
+2026-05-26 12:51:45: info | Add cargo started | app
+2026-05-26 12:51:46: info | Cargo name asf | app
+2026-05-26 12:52:27: info | Add cargo started | app
+2026-05-26 12:52:31: info | Cargo name as | app
+2026-05-26 12:52:45: info | Cargo weight True | app
+2026-05-26 12:57:33: info | Add cargo started | app
+2026-05-26 12:57:44: info | Cargo name as | app
+2026-05-26 12:57:50: info | Add cargo started | app
+2026-05-26 12:58:58: info | Add cargo started | app
+2026-05-26 12:59:20: info | Add cargo started | app
+2026-05-26 12:59:57: info | Add cargo started | app
+2026-05-26 13:00:07: info | Add cargo started | app
+2026-05-26 13:01:05: info | Add cargo started | app
+2026-05-26 13:01:23: info | Add cargo started | app
+2026-05-26 13:03:13: info | Add cargo started | app

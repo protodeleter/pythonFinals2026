@@ -32,12 +32,12 @@ class App:
             return False
         ErrorLogger.write_log("info", "Cargo name " + cname, __name__)
 
-        cweight = self._cs.get_cargo_weight()
+        cweight = self._cs.get_cargo_weight_input()
         if cweight is None:
             return False
         ErrorLogger.write_log("info", "Cargo weight " + str(cweight), __name__)
 
-        cplanet = self._cs.get_cargo_planet()
+        cplanet = self._cs.get_cargo_planet_input()
         if not cplanet:
             return False
         ErrorLogger.write_log("info", "Cargo planet " + cplanet, __name__)
