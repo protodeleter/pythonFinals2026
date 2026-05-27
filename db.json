@@ -1,1 +1,26 @@
-[]
+[
+    {
+        "itemid": 1,
+        "cargo_name": "asf",
+        "cargo_weight": 50.0,
+        "cargo_origin_planet": "45",
+        "requires_cooling": null,
+        "danger_level": null
+    },
+    {
+        "itemid": 2,
+        "cargo_name": "asf",
+        "cargo_weight": 123.0,
+        "cargo_origin_planet": "1a5s",
+        "requires_cooling": null,
+        "danger_level": null
+    },
+    {
+        "itemid": 3,
+        "cargo_name": "asf",
+        "cargo_weight": 12.0,
+        "cargo_origin_planet": "asf",
+        "requires_cooling": 1,
+        "danger_level": 5
+    }
+]

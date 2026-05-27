@@ -72,43 +72,28 @@ class CargoStation:
 
     def get_all_items(self) -> list:
         return self._db.get_all_items()
-
     def _print_all_items(self):
         for item in self.get_all_items():
             print(item)
-
-
     def _cut_the_process(self, value):
         if value == "**":
             ErrorLogger.write_log("info", "Process stopped by user ", __name__)
             return True
         return None
 
-    def get_cargo_planet_input(self) -> str | bool:
+    def get_cargo_planet_input(self) -> str | None:
+        planet = ""
         while True:
-            cplanet = input("Enter Cargo Planet: (Enter ** to exit)")
-            if self._cut_the_process(cplanet):
-                return False
-
-            if not self.get_cargo_planet(cplanet):
+            inp = input("Enter Cargo planet: (Enter ** to exit)")
+            if self._cut_the_process(inp):
+                return None
+            if not self.get_cargo_planet(inp):
                 continue
-
-            cplanet = cplanet.strip()
-            break
-        return cplanet
-
-    def get_cargo_planet(self, planet):
-        try:
-            planet = Validator.validate_name(planet.strip())
-            return planet
-
-        except exceptions.GeneralError:
-            print("Something went wrong")
-            return None
-
-
+            else:
+                planet = inp
+                break
+        return planet
     def get_cargo_name_input(self) -> None | str :
-
         cname = ""
         while True:
             inp = input("Enter Cargo Name: (Enter ** to exit)")
@@ -120,73 +105,72 @@ class CargoStation:
                 cname = inp
                 break
         return cname
-
-    def get_cargo_weight_input(self) -> float|None:
-        cargo_weight = 0
+    def get_cargo_weight_input(self) -> float | None:
         while True:
             try:
                 inp = input("Enter Cargo Weight: (Enter ** to exit) ").strip()
                 if self._cut_the_process(inp):
                     return None
-
-                if not self.get_cargo_weight(inp):
-                    continue
-
                 cargo_weight = self.get_cargo_weight(inp)
-                break
-
-            except ValueError:
+                if cargo_weight is None:
+                    continue
+                return cargo_weight
+            except exceptions.CargoWeightPositiveError:
                 print("Please enter numbers only")
-        return cargo_weight
 
-    def get_danger_level(self) -> None | int:
+    def get_danger_level_inp(self) -> None | int:
         while True:
             try:
                 danger_level = input("Enter Cargo Danger Level: (Enter ** to exit) ")
                 if self._cut_the_process(danger_level):
                     return None
-                danger_level = int(danger_level)
-                if danger_level < 1 or danger_level > 5 :
-                    print("Cargo Danger Level must be between 1 and 5")
+
+                danger_level = self.get_danger_level(danger_level)
+                if danger_level is None:
                     continue
-
-                danger_level = danger_level
-                break
-
+                return danger_level
             except ValueError:
                 print("Please enter numbers only")
-        return danger_level
-    def get_requires_cooling(self) -> None | int:
 
+    def get_requires_cooling_inp(self) -> None | int:
         while True:
             try:
                 requires_cooling = input("Is cargo requires cooling: (Enter ** to exit) \n possible values 1 | 0 \n")
                 if self._cut_the_process(requires_cooling):
                     return None
-
-                requires_cooling = int(requires_cooling)
-                if requires_cooling not in (0, 1):
-                    print("Cargo Requires cooling must be between 1 and 0")
+                requires_cooling = self.get_requires_cooling(requires_cooling)
+                if requires_cooling is None:
                     continue
-
-                requires_cooling = requires_cooling
-                break
-
+                return requires_cooling
             except ValueError:
                 print("Please enter numbers only")
 
-        return requires_cooling
-
-    def get_cargo_weight(self, weight) -> float:
-
-        try:
-            weight = Validator.validate_positive_numbers(weight)
-
-        except exceptions.GeneralError:
-            print("Something went wrong")
-        return weight
 
     def get_cargo_name(self, cname: str) -> str | None:
+        try:
+            return Validator.validate_name(cname)
+        except exceptions.CargoNameError as e:
+            print(e)
+            return None
+    def get_cargo_weight(self, weight) -> float | None:
+        try:
+            return Validator.validate_positive_numbers(weight)
 
-        cname = Validator.validate_name(cname.strip())
-        return cname
+        except exceptions.CargoWeightPositiveError as e:
+            print(e)
+            return None
+    def get_cargo_planet(self, planet) -> str | None:
+        try:
+            return Validator.validate_planet(planet)
+        except ValueError as e:
+            print(e)
+    def get_danger_level(self, danger_level) -> int | None:
+        try:
+            return Validator.validate_danger_level(danger_level)
+        except ValueError as e:
+            print(e)
+    def get_requires_cooling(self,cooling) -> int | None:
+        try:
+            return Validator.validate_cooling_level(cooling)
+        except ValueError as e:
+            print(e)

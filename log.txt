@@ -296,3 +296,100 @@
 2026-05-26 13:01:05: info | Add cargo started | app
 2026-05-26 13:01:23: info | Add cargo started | app
 2026-05-26 13:03:13: info | Add cargo started | app
+2026-05-27 10:43:49: info | Add cargo started | app
+2026-05-27 10:44:01: info | Cargo name asf | app
+2026-05-27 10:46:15: info | Add cargo started | app
+2026-05-27 10:46:17: info | Cargo name asf | app
+2026-05-27 10:52:23: info | Add cargo started | app
+2026-05-27 10:52:29: info | Cargo name asf | app
+2026-05-27 10:52:40: info | Cargo weight False | app
+2026-05-27 10:53:32: info | Add cargo started | app
+2026-05-27 10:53:34: info | Cargo name asf | app
+2026-05-27 10:53:39: info | Cargo weight True | app
+2026-05-27 10:53:48: info | Add cargo started | app
+2026-05-27 10:53:49: info | Cargo name asf | app
+2026-05-27 10:53:51: info | Cargo weight False | app
+2026-05-27 10:54:37: info | Add cargo started | app
+2026-05-27 10:54:39: info | Cargo name asf | app
+2026-05-27 10:54:41: info | Cargo weight False | app
+2026-05-27 10:57:01: info | Add cargo started | app
+2026-05-27 10:57:04: info | Cargo name asf | app
+2026-05-27 11:21:31: info | Add cargo started | app
+2026-05-27 11:21:33: info | Cargo name asf | app
+2026-05-27 11:21:59: info | Add cargo started | app
+2026-05-27 11:22:00: info | Cargo name asf | app
+2026-05-27 11:28:51: info | Add cargo started | app
+2026-05-27 11:28:53: info | Cargo name asf | app
+2026-05-27 11:29:00: info | Cargo weight False | app
+2026-05-27 11:29:27: info | Add cargo started | app
+2026-05-27 11:29:29: info | Cargo name asf | app
+2026-05-27 11:31:34: info | Add cargo started | app
+2026-05-27 11:32:21: info | Add cargo started | app
+2026-05-27 11:34:31: info | Add cargo started | app
+2026-05-27 11:35:04: info | Add cargo started | app
+2026-05-27 11:35:30: info | Add cargo started | app
+2026-05-27 11:36:29: info | Add cargo started | app
+2026-05-27 11:36:41: info | Cargo name asd | app
+2026-05-27 11:36:56: info | Add cargo started | app
+2026-05-27 11:37:29: info | Add cargo started | app
+2026-05-27 11:40:32: info | Add cargo started | app
+2026-05-27 11:40:37: info | Cargo name 123 | app
+2026-05-27 11:40:47: info | Cargo weight 5.0 | app
+2026-05-27 11:53:10: info | Add cargo started | app
+2026-05-27 11:53:13: info | Cargo name asf | app
+2026-05-27 11:53:20: info | Cargo weight 123.0 | app
+2026-05-27 12:24:51: info | Add cargo started | app
+2026-05-27 12:24:55: info | Cargo name asf | app
+2026-05-27 12:25:00: info | Cargo weight 50.0 | app
+2026-05-27 12:25:06: info | Cargo planet 45 | app
+2026-05-27 12:25:06: info | DB updated | db
+2026-05-27 12:25:06: info | Cargo Station: Item 1 was added | cargo_station
+2026-05-27 12:26:19: info | Add cargo started | app
+2026-05-27 12:26:22: info | Process stopped by user  | cargo_station
+2026-05-27 12:26:24: info | Add cargo started | app
+2026-05-27 12:26:30: info | Cargo name -50 | app
+2026-05-27 12:26:38: info | Cargo weight 56.0 | app
+2026-05-27 12:33:15: info | Add cargo started | app
+2026-05-27 12:33:18: info | Cargo name asf | app
+2026-05-27 12:33:20: info | Cargo weight 123.0 | app
+2026-05-27 12:33:24: info | Cargo planet 1a5s | app
+2026-05-27 12:33:24: info | DB updated | db
+2026-05-27 12:33:24: info | Cargo Station: Item 2 was added | cargo_station
+2026-05-27 12:39:11: info | Add cargo started | app
+2026-05-27 12:39:41: info | Add cargo started | app
+2026-05-27 12:39:42: info | Speacial cargo | app
+2026-05-27 12:39:43: info | Cargo name asf | app
+2026-05-27 12:39:44: info | Cargo weight 12.0 | app
+2026-05-27 12:39:45: info | Cargo planet asf | app
+2026-05-27 12:39:55: info | Cargo danger level 2 | app
+2026-05-27 12:46:25: info | Add cargo started | app
+2026-05-27 12:46:26: info | Speacial cargo | app
+2026-05-27 12:46:31: info | Cargo name asf | app
+2026-05-27 12:46:32: info | Cargo weight 124.0 | app
+2026-05-27 12:46:36: info | Cargo planet f12f | app
+2026-05-27 13:19:29: info | Add cargo started | app
+2026-05-27 13:19:31: info | Speacial cargo | app
+2026-05-27 13:19:34: info | Cargo name asf | app
+2026-05-27 13:19:35: info | Cargo weight 12.0 | app
+2026-05-27 13:19:35: info | Cargo planet asf | app
+2026-05-27 13:20:10: info | Add cargo started | app
+2026-05-27 13:20:10: info | Speacial cargo | app
+2026-05-27 13:20:12: info | Cargo name asf | app
+2026-05-27 13:20:12: info | Cargo weight 123.0 | app
+2026-05-27 13:20:13: info | Cargo planet asf | app
+2026-05-27 13:20:34: info | Cargo danger level 5 | app
+2026-05-27 13:21:01: info | Add cargo started | app
+2026-05-27 13:21:03: info | Speacial cargo | app
+2026-05-27 13:21:04: info | Cargo name asf | app
+2026-05-27 13:21:05: info | Cargo weight 12.0 | app
+2026-05-27 13:21:06: info | Cargo planet asf | app
+2026-05-27 13:21:12: info | Cargo danger level 5 | app
+2026-05-27 13:21:51: info | Add cargo started | app
+2026-05-27 13:21:52: info | Speacial cargo | app
+2026-05-27 13:21:53: info | Cargo name asf | app
+2026-05-27 13:21:54: info | Cargo weight 12.0 | app
+2026-05-27 13:21:55: info | Cargo planet asf | app
+2026-05-27 13:22:01: info | Cargo danger level 5 | app
+2026-05-27 13:22:14: info | Cargo requires_cooling 1 | app
+2026-05-27 13:22:14: info | DB updated | db
+2026-05-27 13:22:14: info | Cargo Station: Item 3 was added | cargo_station

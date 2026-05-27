@@ -43,12 +43,12 @@ class App:
         ErrorLogger.write_log("info", "Cargo planet " + cplanet, __name__)
 
         if speacial_cargo_flag:
-            danger_level = self._cs.get_danger_level()
+            danger_level = self._cs.get_danger_level_inp()
             if danger_level is None:
                 return False
             ErrorLogger.write_log("info", "Cargo danger level " + str(danger_level), __name__)
 
-            requires_cooling = self._cs.get_requires_cooling()
+            requires_cooling = self._cs.get_requires_cooling_inp()
             if requires_cooling is None:
                 return False
             ErrorLogger.write_log("info", "Cargo requires_cooling " + str(requires_cooling), __name__)
