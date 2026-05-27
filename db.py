@@ -43,13 +43,14 @@ class Db:
             return item
         return {}
 
-    def delete_item(self, item) -> dict:
+    def delete_item(self, itemid) -> dict | None:
+
         for itm in self._dbfile:
-            if itm.get("itemid") == item["itemid"]:
-                self._dbfile.remove(item)
-                return item
+            if itm.get("itemid") == itemid:
+                self._dbfile.remove(itm)
+                return itm
         self._update_db()
-        return {}
+        return None
 
     def _update_db(self) -> bool:
         try:

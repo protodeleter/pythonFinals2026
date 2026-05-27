@@ -50,14 +50,17 @@ class CargoStation:
 
         return res
 
-    def remove_item(self, itemid: int) -> dict:
+    def remove_item(self, itemid: int) -> dict | None:
         try:
-            item_to_delete= self._db.delete_item(itemid)
-            ErrorLogger.write_log( "info",f"Item {item_to_delete.get("cargo_name")} was removed", __name__)
-            return item_to_delete
-        except exceptions.CargoNotFoundError:
-            print(f"Item {itemid} not found")
-        return {}
+            inp = int(itemid)
+            item_to_delete= self._db.delete_item(inp)
+            if item_to_delete:
+                ErrorLogger.write_log( "info",f"Item {item_to_delete.get("cargo_name")} was removed", __name__)
+                return item_to_delete
+        except ValueError:
+            print("Please enter a valid item id")
+        return None
+
 
     def find_item_by_id(self, itemid: int) -> CargoItem | SpecialCargo:
         for ci in self.get_all_items():
@@ -85,9 +88,11 @@ class CargoStation:
         planet = ""
         while True:
             inp = input("Enter Cargo planet: (Enter ** to exit)")
+            planet = self.get_cargo_planet(inp)
             if self._cut_the_process(inp):
                 return None
-            if not self.get_cargo_planet(inp):
+            if not planet:
+                print("Please enter corrent planet")
                 continue
             else:
                 planet = inp
@@ -100,6 +105,7 @@ class CargoStation:
             if self._cut_the_process(inp):
                 return None
             if not self.get_cargo_name(inp):
+                print("Please enter corrent name ( longer then 2 charachters) ")
                 continue
             else:
                 cname = inp
@@ -113,6 +119,7 @@ class CargoStation:
                     return None
                 cargo_weight = self.get_cargo_weight(inp)
                 if cargo_weight is None:
+                    print("Please enter positive numbers only")
                     continue
                 return cargo_weight
             except exceptions.CargoWeightPositiveError:
@@ -127,6 +134,7 @@ class CargoStation:
 
                 danger_level = self.get_danger_level(danger_level)
                 if danger_level is None:
+                    print("Please enter numbers only between 1 and 5")
                     continue
                 return danger_level
             except ValueError:
@@ -140,6 +148,7 @@ class CargoStation:
                     return None
                 requires_cooling = self.get_requires_cooling(requires_cooling)
                 if requires_cooling is None:
+                    print("Please enter numbers only between 1 and 0")
                     continue
                 return requires_cooling
             except ValueError:
@@ -147,30 +156,17 @@ class CargoStation:
 
 
     def get_cargo_name(self, cname: str) -> str | None:
-        try:
-            return Validator.validate_name(cname)
-        except exceptions.CargoNameError as e:
-            print(e)
-            return None
+        return Validator.validate_name(cname)
     def get_cargo_weight(self, weight) -> float | None:
-        try:
-            return Validator.validate_positive_numbers(weight)
+        return Validator.validate_positive_numbers(weight)
 
-        except exceptions.CargoWeightPositiveError as e:
-            print(e)
-            return None
     def get_cargo_planet(self, planet) -> str | None:
-        try:
-            return Validator.validate_planet(planet)
-        except ValueError as e:
-            print(e)
+        return Validator.validate_planet(planet)
+
+
     def get_danger_level(self, danger_level) -> int | None:
-        try:
-            return Validator.validate_danger_level(danger_level)
-        except ValueError as e:
-            print(e)
+        return Validator.validate_danger_level(danger_level)
+
+
     def get_requires_cooling(self,cooling) -> int | None:
-        try:
-            return Validator.validate_cooling_level(cooling)
-        except ValueError as e:
-            print(e)
+        return Validator.validate_cooling_level(cooling)

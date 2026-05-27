@@ -17,40 +17,33 @@ class Validator:
             print("String must be greater than " + str(length) + " characters")
 
     @staticmethod
-    def validate_name(value):
-
+    def validate_name(value) -> str | None:
         try:
             name = str(value)
         except ValueError:
-            raise exceptions.CargoNameError("Cargo name must be a string")
+            return None
         if not Validator.minimum_length(value, 2):
-            raise exceptions.CargoNameError("Cargo name must be longer than " + str(2) + " characters")
+            return None
         return name
 
 
     @staticmethod
-    def validate_positive_numbers( value) -> float | bool:
+    def validate_positive_numbers( value) -> float | None:
         try:
-            weight = float(value)
+            num = float(value)
         except ValueError:
-            raise exceptions.CargoWeightPositiveError("Cargo weight must be a number")
-
-        if weight < 0:
-            raise exceptions.CargoWeightPositiveError("Cargo weight must be a positive number")
-        return weight
+            return None
+        if num <= 0:
+            return None
+        return num
 
 
     @staticmethod
     def validate_planet(value):
-        if not isinstance(value, str):
-            raise ValueError("Planet must be a string")
-
-        value = value.strip()
-
+        planet = str(value)
         if not Validator.minimum_length(value, 1):
-            raise ValueError("Planet must not be empty")
-
-        return value
+            return None
+        return planet
 
     @staticmethod
     def validate_danger_level( value):
@@ -58,17 +51,18 @@ class Validator:
         try:
             value = int(value)
         except ValueError:
-            print("Danger level must be a number")
+            return None
 
-        if int(value) < 0 or int(value) > 5 :
-            raise ValueError("Danger level must be between 0 and 5")
+        if value < 1 or value > 5:
+            return None
+
         return value
     @staticmethod
     def validate_cooling_level( value):
         try:
             value = int(value)
         except ValueError:
-            print("Cooling level must be a number")
+            return None
         if int(value) < 0 or int(value) > 1:
-            raise ValueError("Cooling level must be between 0 and 1")
+            return None
         return value

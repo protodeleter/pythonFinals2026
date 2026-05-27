@@ -70,25 +70,19 @@ class App:
         ErrorLogger.write_log("info", "Remove cargo started ", __name__)
         print("*** Remove Cargo Item ***")
         items = self._cs.get_all_items()
-        print(self._show_all_items())
-
+        print(items)
 
         while True:
-            try:
-                itm = input("Enter item id: (type ** to main menu) ")
-                if itm == "**":
-                    self._main_menu()
-                    return False
-                item_id = int(itm)
-                if self._cs.remove_item(item_id):
-                    print(f"****Item {item_id} Removed****")
+            itm = input("Enter item id: (type ** to main menu) ")
+            if itm == "**":
+                self._main_menu()
+                return False
+            if self._cs.remove_item(itm):
+                print(f"****Item {itm} Removed****")
+            else:
+                print("****Item not found****")
+            return True
 
-                return True
-            except ValueError:
-                print("Please enter numbers only")
-            except CargoNotFoundError as e:
-                print(e)
-                return True
 
 
     def _find_cargo(self):
