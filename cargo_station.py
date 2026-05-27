@@ -23,6 +23,11 @@ class CargoStation:
         self._cargo_items = cargo_items
 
     def add_item(self, item: CargoItem | SpecialCargo) -> dict | None:
+        """
+        triggers db method insert_item
+        :param item:
+        :return:
+        """
         res = None
         db = Db()
 
@@ -50,6 +55,11 @@ class CargoStation:
         return res
 
     def remove_item(self, itemid: int) -> dict | None:
+        """
+        triggers db method delete_item
+        :param itemid:
+        :return:
+        """
         try:
             inp = int(itemid)
             item_to_delete = self._db.delete_item(inp)
@@ -61,6 +71,11 @@ class CargoStation:
         return None
 
     def find_item_by_id(self, itemid: int) -> CargoItem | SpecialCargo:
+        """
+        finds item in list of items by itemid
+        :param itemid:
+        :return: CargoItem | SpecialCargo
+        """
         for ci in self.get_all_items():
             if ci.get("itemid") == itemid:
                 return ci
@@ -69,22 +84,43 @@ class CargoStation:
         raise exceptions.CargoNotFoundError(f"Item {itemid} not found")
 
     def get_total_weight(self) -> float:
+        """
+
+        :return: total weight of all items
+        """
         return sum(ci.get("cargo_weight", 0) for ci in self.get_all_items())
 
     def get_all_items(self) -> list:
+        """
+
+        :return: list of all items
+        """
         return self._db.get_all_items()
 
     def _print_all_items(self):
+        """
+        prints all items
+        :return:
+        """
         for item in self.get_all_items():
             print(item)
 
-    def _cut_the_process(self, value):
+    def _cut_the_process(self, value) -> bool | None:
+        """
+        check if value is **
+        :param value:
+        :return: bool | None
+        """
         if value == "**":
             ErrorLogger.write_log("info", "Process stopped by user ", __name__)
             return True
         return None
 
     def get_cargo_planet_input(self) -> str | None:
+        """
+        triggers get_cargo_planet and returns input
+        :return: string
+        """
         planet = ""
         while True:
             inp = input("Enter Cargo planet: (Enter ** to exit)")
@@ -100,6 +136,10 @@ class CargoStation:
         return planet
 
     def get_cargo_name_input(self) -> None | str:
+        """
+        triggers get_cargo_name and returns input
+        :return: string
+        """
         cname = ""
         while True:
             inp = input("Enter Cargo Name: (Enter ** to exit)")
@@ -114,6 +154,10 @@ class CargoStation:
         return cname
 
     def get_cargo_weight_input(self) -> float | None:
+        """
+         triggers get_cargo_weight and returns input
+         :return: float
+         """
         while True:
             try:
                 inp = input("Enter Cargo Weight: (Enter ** to exit) ").strip()

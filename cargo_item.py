@@ -13,6 +13,9 @@ class CargoItem:
 
     @property
     def item_id(self) -> int:
+        """
+        :return: _itemid
+        """
         return self._itemid
 
     @property
