@@ -103,12 +103,10 @@ class CargoStationTests(unittest.TestCase):
 
     def test_remove_cargo_item_(self):
         cargo_station = CargoStation()
-
         with self.assertRaises(exceptions.CargoNotFoundError) as cm:
             cargo_station.remove_item(9999)
         the_exception = cm.exception
-        self.assertEqual(the_exception.error_code, 3)
-
+        self.assertEqual(the_exception, 3)
         self.assertRaises(exceptions.CargoNotFoundError)
 
 if __name__ == "__main__":

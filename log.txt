@@ -598,3 +598,42 @@
 2026-05-27 15:55:22: info | Remove cargo started  | app
 2026-05-27 15:55:23: info | DB updated | db
 2026-05-27 15:55:25: info | Remove cargo started  | app
+2026-05-27 19:53:40: info | Remove cargo started  | app
+2026-05-27 19:53:45: info | Item asf was removed | cargo_station
+2026-05-27 19:53:55: info | Remove cargo started  | app
+2026-05-27 19:53:58: info | Item Cargo was removed | cargo_station
+2026-05-27 19:54:05: info | Remove cargo started  | app
+2026-05-27 19:54:06: info | DB updated | db
+2026-05-27 19:57:21: info | Remove cargo started  | app
+2026-05-27 19:57:22: info | Item Cargo was removed | cargo_station
+2026-05-27 19:57:30: info | Remove cargo started  | app
+2026-05-27 19:57:31: info | DB updated | db
+2026-05-27 19:59:18: info | Add cargo started | app
+2026-05-27 19:59:22: info | Cargo name afsafsa | app
+2026-05-27 19:59:24: info | Process stopped by user  | cargo_station
+2026-05-27 20:04:05: info | Add cargo started | app
+2026-05-27 20:07:14: info | Cargo name asfasf | app
+2026-05-27 20:07:15: info | Cargo weight 124.0 | app
+2026-05-27 20:07:16: info | Cargo planet asf | app
+2026-05-27 20:07:16: info | DB updated | db
+2026-05-27 20:07:16: info | Cargo Station: Item 58 was added | cargo_station
+2026-05-27 20:13:29: info | Remove cargo started  | app
+2026-05-27 20:13:31: info | Item asfasf was removed | cargo_station
+2026-05-27 20:16:34: info | Remove cargo started  | app
+2026-05-27 20:16:37: info | Item Cargo was removed | cargo_station
+2026-05-27 20:17:01: info | Remove cargo started  | app
+2026-05-27 20:17:03: info | DB updated | db
+2026-05-27 20:17:19: info | Remove cargo started  | app
+2026-05-27 20:17:20: info | Item asf was removed | cargo_station
+2026-05-27 20:17:53: info | Remove cargo started  | app
+2026-05-27 20:17:54: info | DB updated | db
+2026-05-27 20:17:54: info | Item asf was removed | cargo_station
+2026-05-27 20:17:57: info | Remove cargo started  | app
+2026-05-27 20:17:59: info | DB updated | db
+2026-05-27 20:17:59: info | Item Cargo was removed | cargo_station
+2026-05-27 20:18:04: info | Remove cargo started  | app
+2026-05-27 20:18:05: info | DB updated | db
+2026-05-27 20:18:05: info | Item asfasf was removed | cargo_station
+2026-05-27 20:18:09: info | Remove cargo started  | app
+2026-05-27 20:18:10: info | DB updated | db
+2026-05-27 20:18:10: info | Item Cargo was removed | cargo_station

@@ -1,9 +1,7 @@
 import os
 import time
 
-
 class ErrorLogger:
-
 
     _file = "log.txt"
 
@@ -17,7 +15,6 @@ class ErrorLogger:
 
     def get_file(self):
         return self._file
-
 
     @staticmethod
     def write_log( error ,message , method):

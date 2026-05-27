@@ -1,4 +1,4 @@
-from typing import override
+from _distutils_hack import override
 
 from cargo_item import CargoItem
 
@@ -54,6 +54,5 @@ class SpecialCargo(CargoItem):
             return False
         return True
 
-    @override
     def __str__(self):
         return super().__str__() + f" denger {self.danger_level} requires cooling {self.requires_cooling}"

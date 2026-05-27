@@ -6,8 +6,7 @@ from cargo_item import CargoItem
 from db import Db
 from error_logger import ErrorLogger
 from special_cargo import SpecialCargo
-from validator import Validator
-
+import validator
 
 class CargoStation:
 
@@ -38,8 +37,8 @@ class CargoStation:
             "cargo_name": cargo_name,
             "cargo_weight": weight,
             "cargo_origin_planet": planet,
-            "requires_cooling" : requires_cooling,
-            "danger_level" : danger_level
+            "requires_cooling": requires_cooling,
+            "danger_level": danger_level
         }
 
         try:
@@ -53,21 +52,20 @@ class CargoStation:
     def remove_item(self, itemid: int) -> dict | None:
         try:
             inp = int(itemid)
-            item_to_delete= self._db.delete_item(inp)
+            item_to_delete = self._db.delete_item(inp)
             if item_to_delete:
-                ErrorLogger.write_log( "info",f"Item {item_to_delete.get("cargo_name")} was removed", __name__)
+                ErrorLogger.write_log("info", f'Item {item_to_delete.get("cargo_name")} was removed', __name__)
                 return item_to_delete
         except ValueError:
             print("Please enter a valid item id")
         return None
-
 
     def find_item_by_id(self, itemid: int) -> CargoItem | SpecialCargo:
         for ci in self.get_all_items():
             if ci.get("itemid") == itemid:
                 return ci
 
-        ErrorLogger.write_log( "Error", f"Item {itemid} not found", __name__)
+        ErrorLogger.write_log("Error", f"Item {itemid} not found", __name__)
         raise exceptions.CargoNotFoundError(f"Item {itemid} not found")
 
     def get_total_weight(self) -> float:
@@ -75,9 +73,11 @@ class CargoStation:
 
     def get_all_items(self) -> list:
         return self._db.get_all_items()
+
     def _print_all_items(self):
         for item in self.get_all_items():
             print(item)
+
     def _cut_the_process(self, value):
         if value == "**":
             ErrorLogger.write_log("info", "Process stopped by user ", __name__)
@@ -98,7 +98,8 @@ class CargoStation:
                 planet = inp
                 break
         return planet
-    def get_cargo_name_input(self) -> None | str :
+
+    def get_cargo_name_input(self) -> None | str:
         cname = ""
         while True:
             inp = input("Enter Cargo Name: (Enter ** to exit)")
@@ -111,6 +112,7 @@ class CargoStation:
                 cname = inp
                 break
         return cname
+
     def get_cargo_weight_input(self) -> float | None:
         while True:
             try:
@@ -154,19 +156,17 @@ class CargoStation:
             except ValueError:
                 print("Please enter numbers only")
 
-
     def get_cargo_name(self, cname: str) -> str | None:
-        return Validator.validate_name(cname)
+        return validator.validate_name(cname)
+
     def get_cargo_weight(self, weight) -> float | None:
-        return Validator.validate_positive_numbers(weight)
+        return validator.validate_positive_numbers(weight)
 
     def get_cargo_planet(self, planet) -> str | None:
-        return Validator.validate_planet(planet)
-
+        return validator.validate_planet(planet)
 
     def get_danger_level(self, danger_level) -> int | None:
-        return Validator.validate_danger_level(danger_level)
+        return validator.validate_danger_level(danger_level)
 
-
-    def get_requires_cooling(self,cooling) -> int | None:
-        return Validator.validate_cooling_level(cooling)
+    def get_requires_cooling(self, cooling) -> int | None:
+        return validator.validate_cooling_level(cooling)

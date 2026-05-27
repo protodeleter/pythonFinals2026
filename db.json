@@ -8,22 +8,6 @@
         "danger_level": null
     },
     {
-        "itemid": 2,
-        "cargo_name": "asf",
-        "cargo_weight": 123.0,
-        "cargo_origin_planet": "1a5s",
-        "requires_cooling": null,
-        "danger_level": null
-    },
-    {
-        "itemid": 3,
-        "cargo_name": "asf",
-        "cargo_weight": 12.0,
-        "cargo_origin_planet": "asf",
-        "requires_cooling": 1,
-        "danger_level": 5
-    },
-    {
         "itemid": 4,
         "cargo_name": "Cargo",
         "cargo_weight": 10,
@@ -433,38 +417,6 @@
     },
     {
         "itemid": 55,
-        "cargo_name": "Cargo",
-        "cargo_weight": 10,
-        "cargo_origin_planet": "some planet",
-        "requires_cooling": 1,
-        "danger_level": 1
-    },
-    {
-        "itemid": 56,
-        "cargo_name": "Cargo",
-        "cargo_weight": 10,
-        "cargo_origin_planet": "some planet",
-        "requires_cooling": null,
-        "danger_level": null
-    },
-    {
-        "itemid": 57,
-        "cargo_name": "Cargo",
-        "cargo_weight": 10,
-        "cargo_origin_planet": "some planet",
-        "requires_cooling": 1,
-        "danger_level": 1
-    },
-    {
-        "itemid": 58,
-        "cargo_name": "Cargo",
-        "cargo_weight": 10,
-        "cargo_origin_planet": "some planet",
-        "requires_cooling": null,
-        "danger_level": null
-    },
-    {
-        "itemid": 59,
         "cargo_name": "Cargo",
         "cargo_weight": 10,
         "cargo_origin_planet": "some planet",

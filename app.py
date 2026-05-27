@@ -114,7 +114,7 @@ class App:
     def _show_all_items(self) -> None:
         print("**** All Items ***")
         for item in self._cs.get_all_items():
-            print( f"Item id: {item["itemid"]} | name: {item["cargo_name"]} | weight: {item["cargo_weight"]} | planet: {item["cargo_origin_planet"]} | danger_level: {item["danger_level"]} | requires_cooling: {item["requires_cooling"]} " )
+            print( f'Item id: {item["itemid"]} | name: {item["cargo_name"]} | weight: {item["cargo_weight"]} | planet: {item["cargo_origin_planet"]} | danger_level: {item["danger_level"]} | requires_cooling: {item["requires_cooling"]} ' )
 
 
 
