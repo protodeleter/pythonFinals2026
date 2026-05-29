@@ -97,6 +97,15 @@ class CargoStation:
         """
         return self._db.get_all_items()
 
+    def count_dangerous_cargo(self) -> int | None:
+
+        dangerous_cargo = 0
+        for itm in self.get_all_items():
+            if itm["danger_level"] and  itm["danger_level"] > 0:
+                dangerous_cargo += 1
+        return dangerous_cargo
+
+
     def _print_all_items(self):
         """
         prints all items
@@ -214,3 +223,14 @@ class CargoStation:
 
     def get_requires_cooling(self, cooling) -> int | None:
         return validator.validate_cooling_level(cooling)
+
+    def get_cargo_by_planet(self, planet) -> list:
+        plt = validator.validate_planet(planet)
+        cargo_by_planet = []
+        if plt:
+            for item in self._cargo_items:
+                if plt == item["cargo_origin_planet"]:
+                    cargo_by_planet.append(item)
+
+        return cargo_by_planet
+

@@ -1,4 +1,3 @@
-from _distutils_hack import override
 
 from cargo_item import CargoItem
 

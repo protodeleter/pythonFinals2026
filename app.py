@@ -1,6 +1,7 @@
 from importlib.metadata import requires
 
 import exceptions
+import validator
 from CargoNotFoundError import CargoNotFoundError
 from cargo_item import CargoItem
 from cargo_station import CargoStation
@@ -83,8 +84,6 @@ class App:
                 print("****Item not found****")
             return True
 
-
-
     def _find_cargo(self):
         print("*** Find Cargo Item ***")
         while True:
@@ -116,7 +115,29 @@ class App:
         for item in self._cs.get_all_items():
             print( f'Item id: {item["itemid"]} | name: {item["cargo_name"]} | weight: {item["cargo_weight"]} | planet: {item["cargo_origin_planet"]} | danger_level: {item["danger_level"]} | requires_cooling: {item["requires_cooling"]} ' )
 
+    def _filter_by_planet(self)->None:
+        planet = ""
+        while True:
+            itm = input("Enter Cargo planet: (type ** to main menu) ")
+            if itm == "**":
+                self._main_menu()
+                return None
 
+            if not validator.minimum_length(itm, 1):
+                print("Planet must be at least 1 character")
+                continue
+            planet = itm
+            break
+
+        for item in self._cs.get_cargo_by_planet(planet):
+            print( f'Item id: {item["itemid"]} | name: {item["cargo_name"]} | weight: {item["cargo_weight"]} | planet: {item["cargo_origin_planet"]} | danger_level: {item["danger_level"]} | requires_cooling: {item["requires_cooling"]} ' )
+
+        return None
+
+    def _count_dangerous_cargo(self) -> None:
+        print("*** Count Dangerous Cargo ***")
+        print(self._cs.count_dangerous_cargo())
+        return None
 
     def _main_menu(self) -> None:
         while True:
@@ -132,25 +153,34 @@ class App:
                 main_menu += "4: Show total weight\n"
             if items:
                 main_menu += "5: Show all items \n"
-            main_menu += "6: Exit"
+            if items:
+                main_menu += "6: Filter by planet \n"
+            if items:
+                main_menu += "7: Count dangerous cargo \n"
+
+            main_menu += "8: Exit"
             try:
-                option = int(input(
-                    'Choose an option: \n' + main_menu))
-                option = int(option)
-                if option == 1:
+                option = input('Choose an option: \n' + main_menu)
+
+                op = int(option)
+                if op == 1:
                     self._add_cargo()
-                if option == 2 and items:
+                if op == 2 and items:
                     self._remove_cargo()
-                if option == 3 and items:
+                if op == 3 and items:
                     self._find_cargo()
-                if option == 4 and items:
+                if op == 4 and items:
                     self._show_total_weight()
-                if option == 5 and items:
+                if op == 5 and items:
                     self._show_all_items()
-                if option == 6:
+                if op == 6 and items:
+                    self._filter_by_planet()
+                if op == 7 and items:
+                    self._count_dangerous_cargo()
+                if op == 8:
                     exit(0)
 
-            except exceptions.NumbersError as e:
+            except ValueError as e:
                 print("Please enter numbers only")
 
 
