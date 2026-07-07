@@ -12,15 +12,15 @@ class CargoStation:
 
     def __init__(self):
         self._db = Db()
-        self._cargo_items = self._db.get_all_items()
+        self.__cargo_items = self._db.get_all_items()
 
     @property
     def cargo_items(self):
-        return self._cargo_items
+        return self.__cargo_items
 
     @cargo_items.setter
     def cargo_items(self, cargo_items: list):
-        self._cargo_items = cargo_items
+        self.__cargo_items = cargo_items
 
     def add_item(self, item: CargoItem | SpecialCargo) -> dict | None:
         """
@@ -228,7 +228,7 @@ class CargoStation:
         plt = validator.validate_planet(planet)
         cargo_by_planet = []
         if plt:
-            for item in self._cargo_items:
+            for item in self.__cargo_items:
                 if plt == item["cargo_origin_planet"]:
                     cargo_by_planet.append(item)
 

@@ -10,37 +10,38 @@ class SpecialCargo(CargoItem):
         self.name:str = name
         self.weight:float = weight
         self.origin_planet:str = origin_planet
-        self._danger_level:int = danger_level
-        self._requires_cooling:bool = requires_cooling
+        self.__danger_level:int = danger_level
+        self.__requires_cooling:bool = requires_cooling
 
     @property
     def danger_level(self) -> int:
-        return self._danger_level
+        return self.__danger_level
 
     @danger_level.setter
     def danger_level(self, value) -> None:
-        self._danger_level = value
+        self.__danger_level = value
 
     @property
     def requires_cooling(self) -> bool:
-        return self._requires_cooling
+        return self.__requires_cooling
 
     @requires_cooling.setter
     def requires_cooling(self, value) -> None:
-        self._requires_cooling = value
+        self.__requires_cooling = value
 
     @property
     def weight(self) -> float:
-        return self._weight
+        return self.__weight
     @weight.setter
     def weight(self, value) -> None:
-        self._weight = value
+        self.__weight = value
     @property
     def name(self) -> str:
-        return self._name
+        return self.__name
     @name.setter
     def name(self, value) -> None:
-        self._name = value
+        self.__name = value
+
 
     def get_weight(self):
         return self.weight

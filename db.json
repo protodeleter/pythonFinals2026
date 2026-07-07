@@ -167,7 +167,6 @@
         "requires_cooling": 1,
         "danger_level": 1
     },
-
     {
         "itemid": 55,
         "cargo_name": "Cargo",
@@ -175,5 +174,13 @@
         "cargo_origin_planet": "some planet",
         "requires_cooling": 1,
         "danger_level": 1
+    },
+    {
+        "itemid": 56,
+        "cargo_name": "asfasf",
+        "cargo_weight": 15.0,
+        "cargo_origin_planet": "asf",
+        "requires_cooling": 1,
+        "danger_level": 5
     }
 ]
