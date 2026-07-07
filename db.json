@@ -177,10 +177,10 @@
     },
     {
         "itemid": 56,
-        "cargo_name": "asfasf",
-        "cargo_weight": 15.0,
+        "cargo_name": "asf",
+        "cargo_weight": 124.0,
         "cargo_origin_planet": "asf",
-        "requires_cooling": 1,
-        "danger_level": 5
+        "requires_cooling": 0,
+        "danger_level": 2
     }
 ]

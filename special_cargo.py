@@ -3,9 +3,20 @@ from cargo_item import CargoItem
 
 
 class SpecialCargo(CargoItem):
-
+    """
+    extended cargo type with danger level and cooling requirements
+    """
 
     def __init__(self, name, weight, origin_planet, danger_level, requires_cooling):
+        """
+        initialize SpecialCargo
+        extends CargoItem with danger_level and requires_cooling
+        :param name:
+        :param weight:
+        :param origin_planet:
+        :param danger_level:
+        :param requires_cooling:
+        """
         super().__init__(name, weight, origin_planet)
         self.name:str = name
         self.weight:float = weight
@@ -15,44 +26,103 @@ class SpecialCargo(CargoItem):
 
     @property
     def danger_level(self) -> int:
+        """
+        get danger level
+        :return: int
+        """
         return self.__danger_level
 
     @danger_level.setter
     def danger_level(self, value) -> None:
+        """
+        set danger level
+        :param value:
+        :return:
+        """
         self.__danger_level = value
 
     @property
     def requires_cooling(self) -> bool:
+        """
+        get cooling requirement
+        :return: bool
+        """
         return self.__requires_cooling
 
     @requires_cooling.setter
     def requires_cooling(self, value) -> None:
+        """
+        set cooling requirement
+        :param value:
+        :return:
+        """
         self.__requires_cooling = value
 
     @property
     def weight(self) -> float:
+        """
+        get weight
+        :return: float
+        """
         return self.__weight
+
     @weight.setter
     def weight(self, value) -> None:
+        """
+        set weight
+        :param value:
+        :return:
+        """
         self.__weight = value
+
     @property
     def name(self) -> str:
+        """
+        get name
+        :return: string
+        """
         return self.__name
+
     @name.setter
     def name(self, value) -> None:
+
+        """
+        set name
+        :param value:
+        :return:
+        """
         self.__name = value
 
-
     def get_weight(self):
+        """
+        return weight
+        :return: float
+        """
         return self.weight
+
     def get_name(self):
+        """
+        return name
+        :return: string
+        """
         return self.name
 
     def _validate_danger_level(self):
+        """
+        validate danger level (1–5)
+        :return: bool
+        """
         if self.danger_level <= 0 or self.danger_level > 5:
             print("Please enter a valid danger level")
             return False
         return True
 
     def __str__(self):
-        return super().__str__() + f" denger {self.danger_level} requires cooling {self.requires_cooling}"
+        """
+        string representation of SpecialCargo
+        :return: string
+        """
+        return (
+            super().__str__()
+            + f" danger {self.danger_level} requires cooling {self.requires_cooling}"
+        )

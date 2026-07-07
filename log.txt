@@ -637,12 +637,12 @@
 2026-05-27 20:18:09: info | Remove cargo started  | app
 2026-05-27 20:18:10: info | DB updated | db
 2026-05-27 20:18:10: info | Item Cargo was removed | cargo_station
-2026-07-07 22:21:39: info | Add cargo started | app
-2026-07-07 22:21:42: info | Speacial cargo | app
-2026-07-07 22:21:43: info | Cargo name asfasf | app
-2026-07-07 22:21:45: info | Cargo weight 15.0 | app
-2026-07-07 22:21:46: info | Cargo planet asf | app
-2026-07-07 22:21:48: info | Cargo danger level 5 | app
-2026-07-07 22:21:51: info | Cargo requires_cooling 1 | app
-2026-07-07 22:21:51: info | DB updated | db
-2026-07-07 22:21:51: info | Cargo Station: Item 56 was added | cargo_station
+2026-05-31 16:55:10: info | Add cargo started | app
+2026-05-31 16:55:12: info | Speacial cargo | app
+2026-05-31 16:55:13: info | Cargo name asf | app
+2026-05-31 16:55:16: info | Cargo weight 124.0 | app
+2026-05-31 16:55:17: info | Cargo planet asf | app
+2026-05-31 16:55:21: info | Cargo danger level 2 | app
+2026-05-31 16:55:24: info | Cargo requires_cooling 0 | app
+2026-05-31 16:55:24: info | DB updated | db
+2026-05-31 16:55:24: info | Cargo Station: Item 56 was added | cargo_station
